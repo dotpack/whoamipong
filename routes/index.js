@@ -8,6 +8,7 @@ router.get('/', function(req, res, next) {
       remoteAddress: req.connection.remoteAddress,
       localAddress: req.connection.localAddress,
     },
+    headers: req.headers,
   });
 });
 
