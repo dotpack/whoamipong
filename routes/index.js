@@ -1,8 +1,7 @@
 const express = require('express');
 const router = express.Router();
 
-/* GET home page. */
-router.get('/', function(req, res, next) {
+function pong(req, res, next) {
   res.send({
     connection: {
       remoteAddress: req.connection.remoteAddress,
@@ -10,6 +9,10 @@ router.get('/', function(req, res, next) {
     },
     headers: req.headers,
   });
-});
+}
+
+/* GET home page. */
+router.get('/', pong);
+router.post('/', pong);
 
 module.exports = router;
