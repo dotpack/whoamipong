@@ -9,6 +9,9 @@ function pong(req, res, next) {
       localAddress: req.connection.localAddress,
     },
     headers: req.headers,
+    method: req.method,
+    path: req.path,
+    query: req.query,
     parsedBody: typeof req.body === 'string' ? req.body : '',
     parsedSize: typeof req.body === 'string' ? req.body.length : 0,
   });
@@ -16,7 +19,6 @@ function pong(req, res, next) {
 
 /* GET home page. */
 router.use(textBodyParser);
-router.get('/', pong);
-router.post('/', pong);
+router.use(pong);
 
 module.exports = router;
